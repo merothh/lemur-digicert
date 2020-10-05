@@ -158,7 +158,7 @@ class DigiCertIssuerPlugin(IssuerPlugin):
             'Content-Type': 'application/json',
         }
 
-        response = self.session.post(url, 
+        response = self.session.post(url,
                                      data=json.dumps(data),
                                      headers=headers)
         current_app.logger.info("response.text: {0}".format(response.text))
@@ -318,9 +318,9 @@ class DigiCertIssuerPlugin(IssuerPlugin):
         else:
             order_url = "ssl_plus"
 
-	# Support EV certificates
-	if 'EV_' in request_type:
-	    order_url = re.sub('^ssl_', 'ssl_ev_', order_url)
+        # Support EV certificates
+        if 'EV_' in request_type:
+            order_url = re.sub('^ssl_', 'ssl_ev_', order_url)
 
         # Prefix "private" to the cert
         if private_cert:
